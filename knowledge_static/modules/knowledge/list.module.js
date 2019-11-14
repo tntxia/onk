@@ -41,10 +41,11 @@ new Vue({
             }
         }
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
+        getUrl(row) {
+            return "#knowledge/view?id=" + row.id;
+        },
         add() {
             router.goRoute("knowledge/add");
         },

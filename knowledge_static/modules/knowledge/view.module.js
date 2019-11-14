@@ -45,6 +45,11 @@ new Vue({
             }).done(res => {
                 this.form = res.data;
             })
+        },
+        back() {
+            router.goRoute("knowledge/list", {
+                categoryId: this.form.categoryId
+            })
         }
     }
 })
