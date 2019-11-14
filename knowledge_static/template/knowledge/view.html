@@ -1,0 +1,23 @@
+<div id="app">
+    <div class="jxiaui-table-form">
+        <table style="width: 100%;">
+            <tr>
+                <th>标题</th>
+                <td>{{form.title}}</td>
+
+            </tr>
+            <tr>
+                <th>知识类型</th>
+                <td>
+                    {{form.categoryName}}
+                </td>
+            </tr>
+            <tr>
+                <th>内容</th>
+                <td>
+                    <jxiaui-html-view v-model="form.content" height="500"></jxiaui-html-view>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

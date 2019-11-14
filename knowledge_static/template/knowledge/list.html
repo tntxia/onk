@@ -1,0 +1,21 @@
+<div id="app">
+    <div id="toolbar">
+        <button @click="add">增加</button>
+    </div>
+    <div>
+        <jxiaui-datagrid :dataset="dataset">
+            <jxiaui-datagrid-item label="标题" field="title"></jxiaui-datagrid-item>
+            <jxiaui-datagrid-item label="类型" field="category"></jxiaui-datagrid-item>
+            <jxiaui-datagrid-item label="内容">
+                <template v-slot="row">
+                    {{getContentShort(row)}}
+                </template>
+            </jxiaui-datagrid-item>
+            <jxiaui-datagrid-item label="操作">
+                <template v-slot="row">
+					<button @click="toEdit(row)">编辑</button>
+				</template>
+            </jxiaui-datagrid-item>
+        </jxiaui-datagrid>
+    </div>
+</div>

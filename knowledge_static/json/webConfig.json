@@ -1,0 +1,48 @@
+{
+    "cssList": [
+        "/static/lib/font-awesome/css/font-awesome.css", "/static/lib/font_jxiaui/iconfont.css",
+        "/static/lib/bootstrap/css/bootstrap.css",
+        "/static/lib/bootstrap-plus/css/bootstrap.nav.css",
+        "css/tntxiaui/style.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.datepicker.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.pagination.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.datagrid.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.button.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.ip-input.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.dialog.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.tabs.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.combobox.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui-table-form.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui-upload-image.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui-rich-editor.css",
+        "/static/lib/main-layout-install/css/main-layout.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui-tree.css",
+        "css/tntxiaui/style.css",
+        "css/style.css",
+        "/static/lib/ztree/css/zTreeStyle/zTreeStyle.css",
+        "/static/lib/easy-tree/css/easy-tree.css",
+        "/db_static/css/style.css"
+    ],
+    "jsList": ["/static/lib/module_route/module_route.js", "/static/lib/main-layout-install/js/main-layout-install.js"],
+    "layout": {
+        "router": {
+            "defaultModule": "category/list",
+            "tree": [{
+                "name": "conn",
+                "label": "数据库连接",
+                "index": "list",
+                "children": [{
+                    "name": "add",
+                    "label": "增加"
+                }]
+            }]
+        },
+        "header": {
+            "height": 50
+        },
+        "main": {
+            "crumb": true
+        }
+    }
+}

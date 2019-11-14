@@ -1,0 +1,10 @@
+[{
+    "text": "菜单导航",
+    "buttons": [{
+        "text": "知识管理",
+        "url": "#knowledge/list"
+    }, {
+        "text": "知识类型管理",
+        "url": "#category/list"
+    }]
+}]

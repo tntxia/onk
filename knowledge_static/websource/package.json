@@ -1,0 +1,12 @@
+{
+    "modules": [{
+        "name": "welcome"
+    }, {
+        "group": "action",
+        "name": "add"
+    }, {
+        "group": "action",
+        "name": "list"
+    }],
+    "components": []
+}
