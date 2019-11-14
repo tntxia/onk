@@ -1,12 +1,11 @@
 <div id="app">
-    <div>
-        <button @click="back">返回</button>
-    </div>
     <div class="jxiaui-table-form">
         <table style="width: 100%;">
             <tr>
                 <th>标题</th>
-                <td>{{form.title}}</td>
+                <td><span>{{form.title}}</span>
+                    <button @click="back">返回</button>
+                </td>
 
             </tr>
             <tr>
@@ -18,7 +17,7 @@
             <tr>
                 <th>内容</th>
                 <td>
-                    <jxiaui-html-view v-model="form.content" height="500"></jxiaui-html-view>
+                    <jxiaui-html-view v-model="form.content" :height="viewHeight"></jxiaui-html-view>
                 </td>
             </tr>
         </table>

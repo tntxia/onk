@@ -30,9 +30,12 @@
 new Vue({
     el: '#app',
     data: {
+        viewHeight: 500,
         form: {}
     },
     mounted() {
+        let height = document.body.clientHeight;
+        this.viewHeight = height - 150;
         this.loadData();
     },
     methods: {
