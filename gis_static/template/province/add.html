@@ -1,0 +1,26 @@
+<div id="app">
+    <div class="jxiaui-table-form">
+        <table>
+            <tr>
+                <th>名称</th>
+                <td><input v-model="form.name"></td>
+            </tr>
+            <tr>
+                <th>英文名称</th>
+                <td><input v-model="form.nameEn"></td>
+            </tr>
+            <tr>
+                <th>类型</th>
+                <td>
+                    <select v-model="form.regionType">
+                        <option value="province">省份</option>
+                        <option value="SAR">特别行政区</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <button @click="sub">增加</button>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div id="app">
+    <div>
+        <div>
+            名称:<input v-model="form.name">
+        </div>
+        <div style="position:relative;">
+            数据库类型:
+            <select v-model="form.dbType">
+				<option value="">请选择</option>
+				<option>h2</option>
+				<option>sqlserver</option>
+				<option>jndi</option>
+			</select>
+            <span>
+                <span style="position: relative;">
+                    <button @click="chooseFile">选择</button>
+                    <file-choose ref="fileChoose" @choose="resetUrl"></file-choose>
+                </span>
+            <br>
+            </span>
+        </div>
+    </div>
+    <div>
+        <div class="jxiaui-table-form">
+            <table>
+                <tr>
+                    <th>位置:</th>
+                    <td><input v-model="form.url" style="width:250px;"></td>
+                </tr>
+                <tr>
+                    <th>驱动:</th>
+                    <td><input v-model="form.driver"></td>
+                </tr>
+                <tr>
+                    <th>用户名:</th>
+                    <td><input v-model="form.username"></td>
+                </tr>
+                <tr>
+                    <th>密码:</th>
+                    <td><input v-model="form.password"></td>
+                </tr>
+            </table>
+            <div>
+                <button @click="sub">增加</button>
+            </div>
+        </div>
+    </div>
+</div>

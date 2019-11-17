@@ -1,0 +1,10 @@
+[{
+    "text": "菜单导航",
+    "buttons": [{
+        "text": "国家管理",
+        "url": "#country"
+    }, {
+        "text": "省份管理",
+        "url": "#province"
+    }]
+}]
