@@ -24,6 +24,10 @@
         var exports = Object.create(null);
         module.exports = exports;
 
+        
+        module.exports.template = null;
+        
+
         exports.init = function() {
             let id = router.getParam("id");
 

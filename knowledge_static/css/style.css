@@ -1,20 +1,3 @@
-.dbconn-operate {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.dbconn-operate .leftbar {
-    width: 200px;
-    border-right: 1px solid #ccc;
-    height: 100%;
-    overflow: auto;
-}
-
-.dbconn-operate .main {
-    display: flex;
-    border: 1px solid #ccc;
-    flex-grow: 1;
-    height: 100%;
+.view-row {
+    padding: 10px;
 }

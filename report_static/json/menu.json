@@ -1,0 +1,10 @@
+[{
+    "text": "菜单导航",
+    "buttons": [{
+        "text": "模板管理",
+        "url": "#template"
+    }, {
+        "text": "数据管理",
+        "url": "#data"
+    }]
+}]

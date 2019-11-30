@@ -1,47 +1,49 @@
 {
     "cssList": [
-        "/static/lib/font-awesome/css/font-awesome.css", "/static/lib/font_jxiaui/iconfont.css",
+        "/static/lib/font-awesome/css/font-awesome.css",
         "/static/lib/bootstrap/css/bootstrap.css",
         "/static/lib/bootstrap-plus/css/bootstrap.nav.css",
+        "css/tntxiaui/style.css",
         "/static/lib/jxiaui/0.1/css/jxiaui.css",
         "/static/lib/jxiaui/0.1/css/jxiaui.datepicker.css",
         "/static/lib/jxiaui/0.1/css/jxiaui.pagination.css",
         "/static/lib/jxiaui/0.1/css/jxiaui.datagrid.css",
-        "/static/lib/jxiaui/0.1/css/jxiaui.button.css",
         "/static/lib/jxiaui/0.1/css/jxiaui.ip-input.css",
         "/static/lib/jxiaui/0.1/css/jxiaui.dialog.css",
         "/static/lib/jxiaui/0.1/css/jxiaui.tabs.css",
         "/static/lib/jxiaui/0.1/css/jxiaui.combobox.css",
         "/static/lib/jxiaui/0.1/css/jxiaui-table-form.css",
         "/static/lib/jxiaui/0.1/css/jxiaui-upload-image.css",
-        "/static/lib/jxiaui/0.1/css/jxiaui-rich-editor.css",
         "/static/lib/main-layout-install/css/main-layout.css",
         "/static/lib/jxiaui/0.1/css/jxiaui-tree.css",
-        "/static/lib/jxiaui/0.1/css/jxiaui-left-right-pane.css",
         "css/tntxiaui/style.css",
+        "css/style.css",
         "/static/lib/ztree/css/zTreeStyle/zTreeStyle.css",
         "/static/lib/easy-tree/css/easy-tree.css",
-        "/knowledge_static/css/style.css"
+        "/oa_admin_static/css/style.css"
     ],
     "jsList": ["/static/lib/module_route/module_route.js", "/static/lib/main-layout-install/js/main-layout-install.js"],
+    "components": [{
+        "name": "menu-edit-view",
+        "url": "/oa_admin_static/components/menu/menu-edit-view.js"
+    }, {
+        "name": "menu-add-view",
+        "url": "/oa_admin_static/components/menu/menu-add-view.js"
+    }],
     "layout": {
         "router": {
-            "defaultModule": "category/list",
-            "tree": [{
-                "name": "conn",
-                "label": "数据库连接",
-                "index": "list",
-                "children": [{
-                    "name": "add",
-                    "label": "增加"
-                }]
-            }]
+            "defaultModule": "template/list"
         },
         "header": {
-            "height": 50
+            "height": 50,
+            "template": "/report_static/template/header.html"
+        },
+        "leftbar": {
+            "url": "/report_static/json/menu.json",
+            "width": 150
         },
         "main": {
-            "crumb": true
+            "template": "/report_static/template/content.html"
         }
     }
 }

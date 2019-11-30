@@ -24,6 +24,10 @@
         var exports = Object.create(null);
         module.exports = exports;
 
+        
+        module.exports.template = "<div id=\"app\">\r\n    <div id=\"toolbar\">\r\n        <button @click=\"add\">增加</button>\r\n        <button>返回</button>\r\n    </div>\r\n    <div>\r\n        知识点列表：\r\n    </div>\r\n    <div>\r\n        <jxiaui-datagrid ref=\"datagrid\" :dataset=\"dataset\">\r\n            <jxiaui-datagrid-item label=\"标题\" field=\"title\">\r\n                <template v-slot=\"row\">\r\n                    <a :href=\"getUrl(row)\">{{row.title}}</a>\r\n                </template>\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"类型\" field=\"category\"></jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"内容\">\r\n                <template v-slot=\"row\">\r\n                    {{getContentShort(row)}}\r\n                </template>\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"操作\">\r\n                <template v-slot=\"row\">\r\n                    <button @click=\"toEdit(row)\">编辑</button>\r\n                    <button @click=\"del(row)\">删除</button>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n        </jxiaui-datagrid>\r\n    </div>\r\n</div>";
+        
+
         exports.init = function() {
             let categoryId = router.getParam("categoryId");
 new Vue({
@@ -49,6 +53,9 @@ new Vue({
         add() {
             router.goRoute("knowledge/add");
         },
+        query() {
+            this.$refs.datagrid.query();
+        },
         getContentShort(row) {
             let content = row.content;
             let tempEl = document.createElement("div");
@@ -63,6 +70,25 @@ new Vue({
         toEdit(row) {
             router.goRoute('knowledge/edit', {
                 id: row.id
+            })
+        },
+        del(row) {
+            if (!confirm("是否确认删除？")) {
+                return;
+            }
+            let me = this;
+            $.ajax({
+                url: 'knowledge!del.do',
+                data: {
+                    id: row.id
+                }
+            }).done(function(data) {
+                if (data.success) {
+                    alert("删除成功");
+                    me.query();
+                } else {
+                    alert("删除失败");
+                }
             })
         }
     }
