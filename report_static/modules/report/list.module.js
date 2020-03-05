@@ -29,7 +29,7 @@
         
 
         exports.init = function() {
-            let url = webRoot + "report!list.do";
+            let url = "report!list.do";
 
 new Vue({
     el: '#template-app',
