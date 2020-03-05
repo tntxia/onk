@@ -25,16 +25,24 @@
         module.exports = exports;
 
         
-        module.exports.template = "<div id=\"template-app\">\r\n    <div id=\"form\">\r\n        <button @click=\"add\">增加报表模板</button>\r\n        <button @click=\"toImport\">导入</button>\r\n        <input type=\"file\" ref=\"hiddenFileInput\" @change=\"uploadFile\" style=\"display:none;\">\r\n\r\n    </div>\r\n    <div id=\"datagrid\">\r\n        <jxiaui-datagrid class=\"table\" ref=\"templateList\">\r\n            <jxiaui-datagrid-item label=\"名称\" field=\"name\"></jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"状态\" field=\"status\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"文件路径\" field=\"file_path\">\r\n                <template v-slot=\"row\">\r\n                    {{row.file_path}} <button @click=\"down(row)\">下载</button>\r\n                </template>\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"创建时间\" field=\"create_time\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"服务地址\" field=\"service_url\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"操作\">\r\n                <template v-slot=\"row\">\r\n\t\t\t\t\t<button @click=\"del(row)\">删除</button>\r\n                    <button @click=\"exports(row)\">导出</button>\r\n                    <button @click=\"copy(row)\">复制</button>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n        </jxiaui-datagrid>\r\n    </div>\r\n</div>";
+        module.exports.template = "<div id=\"template-app\">\r\n    <div id=\"form\">\r\n        <button @click=\"add\">增加报表模板</button>\r\n        <button @click=\"toImport\">导入</button>\r\n        <input type=\"file\" ref=\"hiddenFileInput\" @change=\"uploadFile\" style=\"display:none;\">\r\n\r\n    </div>\r\n    <div id=\"datagrid\">\r\n        <jxiaui-datagrid class=\"table\" :dataset=\"dataset\">\r\n            <jxiaui-datagrid-item label=\"名称\" field=\"name\"></jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"状态\" field=\"status\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"文件路径\" field=\"file_path\">\r\n                <template v-slot=\"row\">\r\n                    {{row.file_path}} <button @click=\"down(row)\">下载</button>\r\n                </template>\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"创建时间\" field=\"create_time\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"服务地址\" field=\"service_url\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"操作\">\r\n                <template v-slot=\"row\">\r\n\t\t\t\t\t<button @click=\"del(row)\">删除</button>\r\n                    <button @click=\"exports(row)\">导出</button>\r\n                    <button @click=\"copy(row)\">复制</button>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n        </jxiaui-datagrid>\r\n    </div>\r\n</div>";
         
 
         exports.init = function() {
-            new Vue({
+            let url = webRoot + "report!list.do";
+
+new Vue({
     el: '#template-app',
-    data: {},
-    mounted() {
-        this.loadData();
+    data() {
+        return {
+            dataset: {
+                url: url,
+                method: 'post',
+                pageSize: 50
+            }
+        }
     },
+    mounted() {},
     methods: {
         loadData() {
             let me = this;

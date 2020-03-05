@@ -25,25 +25,28 @@
         module.exports = exports;
 
         
-        module.exports.template = "<div id=\"template-app\">\r\n    <div id=\"form\">\r\n\r\n    </div>\r\n    <div id=\"datagrid\">\r\n        <jxiaui-datagrid class=\"table\">\r\n            <jxiaui-datagrid-item label=\"名称\" field=\"name\">\r\n                <template v-slot=\"row\">\r\n\t\t\t\t\t<a :href=\"'#template/detail?id='+row.id\">{{row.name}}</a>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"显示名称\" field=\"display_name\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"服务地址\" field=\"service_url\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"操作\">\r\n                <template v-slot=\"row\">\r\n\t\t\t\t\t<button @click=\"del(row)\">删除</button>\r\n                    <button @click=\"exports(row)\">导出</button>\r\n                    <button @click=\"copy(row)\">复制</button>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n        </jxiaui-datagrid>\r\n    </div>\r\n</div>";
+        module.exports.template = "<div id=\"template-app\">\r\n    <div id=\"form\">\r\n\r\n    </div>\r\n    <div id=\"datagrid\">\r\n        <jxiaui-datagrid class=\"table\" :dataset=\"dataset\">\r\n            <jxiaui-datagrid-item label=\"名称\" field=\"name\">\r\n                <template v-slot=\"row\">\r\n\t\t\t\t\t<a :href=\"'#template/detail?id='+row.id\">{{row.name}}</a>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"显示名称\" field=\"display_name\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"服务地址\" field=\"service_url\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"操作\">\r\n                <template v-slot=\"row\">\r\n\t\t\t\t\t<button @click=\"del(row)\">删除</button>\r\n                    <button @click=\"exports(row)\">导出</button>\r\n                    <button @click=\"copy(row)\">复制</button>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n        </jxiaui-datagrid>\r\n    </div>\r\n</div>";
         
 
         exports.init = function() {
-            new Vue({
+            let url = "template!list.do";
+
+new Vue({
     el: '#template-app',
-    data: {},
+    data() {
+        return {
+            dataset: {
+                url: url,
+                method: 'post',
+                pageSize: 50
+            }
+        }
+    },
     mounted() {
         this.loadData();
     },
     methods: {
-        loadData() {
-            let me = this;
-            $.ajax({
-                url: "template!list.do"
-            }).done(res => {
-                me.$refs["templateList"].setRows(res.rows);
-            })
-        },
+        loadData() {},
         add() {
             router.goRoute("template/add");
         },
