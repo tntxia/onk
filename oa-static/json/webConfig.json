@@ -1,0 +1,115 @@
+{
+    "title": "深圳市欧锘克电子有限公司",
+    "version": "20190926223525",
+    "cssList": ["/static/lib/font-awesome/css/font-awesome.css", "/static/lib/font_jxiaui/iconfont.css",
+        "/static/lib/bootstrap/css/bootstrap.css", "/static/lib/jxiaui/0.1/css/jxiaui.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.datepicker.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.pagination.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.datagrid.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.dialog.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.tabs.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.button.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui.combobox.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui-table-form.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui-radio-group.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui-tree.css",
+        "/static/lib/jxiaui/0.1/css/jxiaui-rich-editor.css",
+        "/static/lib/main-layout-install/css/main-layout.css",
+        "/oa_static/css/top.css",
+        "/oa_static/css/manageIndex.css",
+        "css/cwface.css", "css/tntxiaui/style.css"
+    ],
+    "jsList": [
+        "/static/lib/bootstrap/js/bootstrap.js",
+        "/static/lib/bootstrap-plus/js/bootstrap-utils.js", "/static/lib/module_route/module_route.js"
+    ],
+    "components": [],
+    "layout": {
+        "router": {
+            "defaultModule": "index_main",
+            "moduleMapping": {
+                "finance_fund": {
+                    "path": "/oa_static/modules/finance/finance_fund.module.js",
+                    "template": "/oa_static/template/finance/finance_fund.html"
+                },
+                "finance_wage": {
+                    "path": "/oa_static/modules/finance/finance_wage.module.js",
+                    "template": "/oa_static/template/finance/finance_wage.html"
+                },
+                "finance_exchange": {
+                    "path": "/oa_static/modules/finance/finance_exchange.module.js",
+                    "template": "/oa_static/template/finance/finance_exchange.html"
+                },
+                "finance_payment_wait": {
+                    "path": "/oa_static/modules/finance/finance_payment_wait.module.js",
+                    "template": "/oa_static/template/finance/finance_payment_wait.html"
+                },
+                "finance_payment_finish": {
+                    "path": "/oa_static/modules/finance/finance_payment_finish.module.js",
+                    "template": "/oa_static/template/finance/finance_payment_finish.html"
+                },
+                "finance_payment_refund_wait": {
+                    "path": "/oa_static/modules/finance/finance_payment_refund_wait.module.js",
+                    "template": "/oa_static/template/finance/finance_payment_refund_wait.html"
+                },
+                "finance_payment_refund_finish": {
+                    "path": "/oa_static/modules/finance/finance_payment_refund_finish.module.js",
+                    "template": "/oa_static/template/finance/finance_payment_refund_finish.html"
+                },
+                "finance_tax_wait": {
+                    "path": "/oa_static/modules/finance/finance_tax_wait.module.js",
+                    "template": "/oa_static/template/finance/finance_tax_wait.html"
+                },
+                "finance_tax_finish": {
+                    "path": "/oa_static/modules/finance/finance_tax_finish.module.js",
+                    "template": "/oa_static/template/finance/finance_tax_finish.html"
+                },
+                "finance_refund": {
+                    "path": "/oa_static/modules/finance/finance_refund.module.js",
+                    "template": "/oa_static/template/finance/finance_refund.html"
+                },
+                "finance_refund_gathered": {
+                    "path": "/oa_static/modules/finance/finance_refund_gathered.module.js",
+                    "template": "/oa_static/template/finance/finance_refund_gathered.html"
+                },
+                "hr_my_attandance": {
+                    "path": "/oa_static/modules/hr/hr_my_attandance.module.js",
+                    "template": "/oa_static/template/hr/hr_my_attandance.html"
+                },
+                "hr_attandance_manage": {
+                    "path": "/oa_static/modules/hr/hr_attandance_manage.module.js",
+                    "template": "/oa_static/template/hr/hr_attandance_manage.html"
+                },
+                "hr_activity": {
+                    "path": "/oa_static/modules/hr/hr_activity.module.js",
+                    "template": "/oa_static/template/hr/hr_activity.html"
+                },
+                "market_trade_policy": {
+                    "path": "/oa_static/modules/market/market_trade_policy.module.js",
+                    "template": "/oa_static/template/market/market_trade_policy.html"
+                },
+                "assay_sale_ranking_product": {
+                    "depentJs": "/static/lib/echarts/echarts.js",
+                    "path": "/oa_static/modules/assay/assay_sale_ranking_product.module.js",
+                    "template": "/oa_static/template/assay/assay_sale_ranking_product.html"
+                },
+                "assay_sale": {
+                    "path": "/oa_static/modules/assay/assay_sale.module.js",
+                    "template": "/oa_static/template/assay/assay_sale.html"
+                }
+            }
+        },
+        "header": {
+            "vueMount": true,
+            "height": 80,
+            "template": "/oa_static/template/header.html"
+        },
+        "leftbar": {
+            "url": "leftbar.do",
+            "width": 200
+        },
+        "main": {
+            "template": "/oa_static/template/content.html"
+        }
+    }
+}

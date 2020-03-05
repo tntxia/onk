@@ -2,9 +2,9 @@
     "text": "菜单导航",
     "buttons": [{
         "text": "模板管理",
-        "url": "#template"
+        "url": "#template/list"
     }, {
-        "text": "数据管理",
-        "url": "#data"
+        "text": "报表管理",
+        "url": "#report/list"
     }]
 }]

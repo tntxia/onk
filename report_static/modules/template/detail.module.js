@@ -25,7 +25,7 @@
         module.exports = exports;
 
         
-        module.exports.template = "<div id=\"app\">\r\n    <table id=\"form\" class=\"table table-bordered\">\r\n        <tr>\r\n            <th>名称</th>\r\n            <td><input v-model=\"detail.name\" style=\"width:400px;\"></td>\r\n        </tr>\r\n        <tr>\r\n            <th>显示名称</th>\r\n            <td><input v-model=\"detail.display_name\" style=\"width:400px;\"></td>\r\n        </tr>\r\n        <tr>\r\n            <th>服务路径</th>\r\n            <td><input v-model=\"detail.service_url\" style=\"width:400px;\"></td>\r\n        </tr>\r\n        <tr>\r\n            <td colspan=\"2\">\r\n                <button @click=\"update\">修改</button>\r\n                <button @click=\"generateReport\">生成报表</button>\r\n                <button @click=\"exports\">导出</button>\r\n            </td>\r\n        </tr>\r\n    </table>\r\n    <cols-table :pid=\"id\"></cols-table>\r\n</div>";
+        module.exports.template = "<div id=\"app\">\r\n    <table id=\"form\" class=\"table table-bordered\">\r\n        <tr>\r\n            <th>名称</th>\r\n            <td><input v-model=\"detail.name\" style=\"width:400px;\"></td>\r\n        </tr>\r\n        <tr>\r\n            <th>显示名称</th>\r\n            <td><input v-model=\"detail.display_name\" style=\"width:400px;\"></td>\r\n        </tr>\r\n        <tr>\r\n            <th>服务路径</th>\r\n            <td><input v-model=\"detail.service_url\" style=\"width:400px;\"></td>\r\n        </tr>\r\n        <tr>\r\n            <td colspan=\"2\">\r\n                <button @click=\"update\">修改</button>\r\n                <button @click=\"generateReport\">生成报表</button>\r\n                <button @click=\"exports\">导出</button>\r\n            </td>\r\n        </tr>\r\n    </table>\r\n    <cols-table :pid=\"id\"></cols-table>\r\n    <params-fill-dialog ref=\"paramsFillDialog\" :width=\"1000\" :template-name=\"detail.name\"></params-fill-dialog>\r\n</div>";
         
 
         exports.init = function() {
@@ -158,6 +158,62 @@ new Vue({
     }
 }
 module.exports.template = "<div>\r\n    <div>\r\n        <button @click=\"add\">增加列</button>\r\n    </div>\r\n    <jxiaui-datagrid ref=\"datagrid\" :dataset=\"dataset\">\r\n        <jxiaui-datagrid-item label=\"列名\">\r\n            <template v-slot=\"row\">\r\n                 <input v-model=\"row.name\">\r\n             </template>\r\n        </jxiaui-datagrid-item>\r\n        <jxiaui-datagrid-item label=\"对应字段\">\r\n            <template v-slot=\"row\">\r\n                 <input v-model=\"row.field\">\r\n             </template>\r\n        </jxiaui-datagrid-item>\r\n        <jxiaui-datagrid-item label=\"操作\">\r\n            <template v-slot:default=\"row\">\r\n                 <button @click=\"save(row)\">保存</button>\r\n             </template>\r\n        </jxiaui-datagrid-item>\r\n    </jxiaui-datagrid>\r\n</div>";
+        return module.exports;
+    }
+    ,
+    'params-fill-dialog',
+    function() {
+        var module = Object.create(null);
+        module.exports = {
+    props: ['templateName'],
+    data() {
+        return {
+            showFlag: false,
+            paramRows: []
+        }
+    },
+    mounted() {
+        this.query();
+    },
+    updated() {},
+    methods: {
+        show() {
+            this.$refs.dialog.show();
+        },
+        add() {
+            this.paramRows.push({
+                paramName: null,
+                paramValue: null
+            })
+        },
+        generate() {
+
+            let paramMap = {};
+            this.paramRows.forEach(p => {
+                paramMap.push
+            })
+
+            let param = {
+                templateName: this.templateName,
+                params: JSON.stringify(paramMap)
+            };
+            $.ajax({
+                url: 'template!generate.do',
+                type: 'post',
+                data: param
+            }).done(res => {
+                if (res.success) {
+                    alert("修改成功");
+                } else {
+                    alert("修改失败");
+                }
+            }).fail(e => {
+                console.error(e);
+            });
+        }
+    }
+}
+module.exports.template = "<jxiaui-dialog ref=\"dialog\" title=\"增加参数\">\r\n    <div>\r\n        <div>\r\n            <button @click=\"add\">增加</button>\r\n            <button @click=\"generate\">生成报表</button>\r\n        </div>\r\n        <div class=\"jxiaui-datagrid\">\r\n            <table>\r\n                <tr>\r\n                    <th>参数名</th>\r\n                    <th>参数值</th>\r\n                </tr>\r\n                <tr v-for=\"row in paramRows\">\r\n                    <td>\r\n                        <input v-model=\"row.paramName\">\r\n                    </td>\r\n                    <td>\r\n                        <input v-model=\"row.paramValue\">\r\n                    </td>\r\n                </tr>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</jxiaui-dialog>";
         return module.exports;
     }
     

@@ -19,13 +19,13 @@
     }
 
     window.modules[name] = module;
-})('template/list', function() {
+})('report/list', function() {
         var module = Object.create(null);
         var exports = Object.create(null);
         module.exports = exports;
 
         
-        module.exports.template = "<div id=\"template-app\">\r\n    <div id=\"form\">\r\n\r\n    </div>\r\n    <div id=\"datagrid\">\r\n        <jxiaui-datagrid class=\"table\">\r\n            <jxiaui-datagrid-item label=\"名称\" field=\"name\">\r\n                <template v-slot=\"row\">\r\n\t\t\t\t\t<a :href=\"'#template/detail?id='+row.id\">{{row.name}}</a>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"显示名称\" field=\"display_name\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"服务地址\" field=\"service_url\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"操作\">\r\n                <template v-slot=\"row\">\r\n\t\t\t\t\t<button @click=\"del(row)\">删除</button>\r\n                    <button @click=\"exports(row)\">导出</button>\r\n                    <button @click=\"copy(row)\">复制</button>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n        </jxiaui-datagrid>\r\n    </div>\r\n</div>";
+        module.exports.template = "<div id=\"template-app\">\r\n    <div id=\"form\">\r\n        <button @click=\"add\">增加报表模板</button>\r\n        <button @click=\"toImport\">导入</button>\r\n        <input type=\"file\" ref=\"hiddenFileInput\" @change=\"uploadFile\" style=\"display:none;\">\r\n\r\n    </div>\r\n    <div id=\"datagrid\">\r\n        <jxiaui-datagrid class=\"table\" ref=\"templateList\">\r\n            <jxiaui-datagrid-item label=\"名称\" field=\"name\"></jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"状态\" field=\"status\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"文件路径\" field=\"file_path\">\r\n                <template v-slot=\"row\">\r\n                    {{row.file_path}} <button @click=\"down(row)\">下载</button>\r\n                </template>\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"创建时间\" field=\"create_time\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"服务地址\" field=\"service_url\">\r\n            </jxiaui-datagrid-item>\r\n            <jxiaui-datagrid-item label=\"操作\">\r\n                <template v-slot=\"row\">\r\n\t\t\t\t\t<button @click=\"del(row)\">删除</button>\r\n                    <button @click=\"exports(row)\">导出</button>\r\n                    <button @click=\"copy(row)\">复制</button>\r\n\t\t\t\t</template>\r\n            </jxiaui-datagrid-item>\r\n        </jxiaui-datagrid>\r\n    </div>\r\n</div>";
         
 
         exports.init = function() {
@@ -39,7 +39,7 @@
         loadData() {
             let me = this;
             $.ajax({
-                url: "template!list.do"
+                url: "report!list.do"
             }).done(res => {
                 me.$refs["templateList"].setRows(res.rows);
             })
@@ -83,22 +83,8 @@
                 alert("导出异常")
             })
         },
-        copy(row) {
-            let me = this;
-            $.ajax({
-                url: 'template!copy.do',
-                data: {
-                    id: row.id
-                }
-            }).done(function(data) {
-                if (data.success) {
-                    me.loadData();
-                } else {
-                    alert("复制失败")
-                }
-            }).fail(function() {
-                alert("复制异常")
-            })
+        down(row) {
+            window.open("report!download.do?id=" + row.id);
         },
         toImport() {
             this.$refs["hiddenFileInput"].click();
